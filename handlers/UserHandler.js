@@ -133,20 +133,42 @@ exports.login = async (req, h) => {
   }
 
   exports.userBooking = async (req, h) => {
-    let params
+    let params,date,result=[]
     req = new requestHelper.Request(req)
     params = req.allParams      
     userInfo= h.request.auth.credentials.sessionAuth
     if ( !params.day || !params.month) throw err[code[400]](lang[locale][msg[1001]])
     try{      
-      booking = await Booking.findAll({
+      bookings = await Booking.findAll({
         where: {
           userId: userInfo.userId,
           status:1
         },
       })
-      if (!booking) return err[code[400]](lang[locale][msg[1006]])
-      return h.response({ message: lang[locale][msg[0]] })
+      
+      if (!bookings) return err[code[400]](lang[locale][msg[1006]])
+      result=[]
+      for (booking of bookings){
+        room= await Room.findOne({
+          where:{id: booking.dataValues.roomId, active:1}
+        })
+          if (room){
+          date=booking.dataValues.day+"-"+booking.dataValues.month +"-2021"
+          
+          data={
+            room: room.dataValues.name,
+            date: date,
+            typeroom: room.dataValues.type,
+            quantity: booking.dataValues.quantity,
+            price: parseInt(room.dataValues.price*booking.dataValues.quantity),
+          }
+          
+          result.push(data)
+          
+          } 
+      }
+      
+      return h.response(result)
       .code(200)
     } catch(error) {
       console.error(`[UserHandler.Book] ERROR: ${error}`)
