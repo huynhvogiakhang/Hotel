@@ -23,17 +23,6 @@ let init = async () => {
     server = await Intergration(server)
     await server.start()
     console.log('\x1b[32m', `Server running on ${process.env.NODE_ENV} ${server.info.uri}`, '\x1b[37m');
-    console.log('\x1b[32m',
-        `
-   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _     
-  |                                                                                 |
-  |        *        ******    ******   * * * *   *       *  *       *  * * * * * *  |
-  |      *   *     *         *        *       *  *       *  * *     *       *       |
-  |     * * * *   *         *         *       *  *       *  *   *   *       *       |
-  |    *       *   *         *        *       *  *       *  *     * *       *       |
-  |   *         *   ******    ******   * * * *    * * * *   *       *       *       |
-  |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _| 
-  `, '\x1b[37m')
 }
 init()
 module.exports = server

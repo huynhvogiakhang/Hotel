@@ -7,11 +7,11 @@
 npm install
 
 # run server
-
+LOCAL: npm run start
 SANDBOX: npm run sand
 STAGING: npm run stag
 PRODUCTION: npm run prod
-npm start
+
 
 # Post Man Collection 
 https://www.getpostman.com/collections/d0500709c6e028cd8837

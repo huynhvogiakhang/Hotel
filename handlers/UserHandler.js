@@ -161,6 +161,7 @@ exports.login = async (req, h) => {
     userInfo= h.request.auth.credentials.sessionAuth
     if ( !params.day || !params.month) throw err[code[400]](lang[locale][msg[1001]])
     try{      
+
       booking = await Booking.findOne({
         where: {
           userId: userInfo.userId,
@@ -170,7 +171,9 @@ exports.login = async (req, h) => {
         },
       })
       if (!booking) return err[code[400]](lang[locale][msg[1008]])
-      
+      remainRoom= await RoomStatus.findOne({
+        where: {roomId: booking.dataValues.roomId,day: parseInt(params.day),month: parseInt(params.month) }
+      })
     } catch(error) {
       console.error(`[UserHandler.Book] ERROR: ${error}`)
       throw err[code[500]](error.message)
