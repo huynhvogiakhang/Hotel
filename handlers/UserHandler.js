@@ -146,7 +146,8 @@ exports.login = async (req, h) => {
         },
       })
       if (!booking) return err[code[400]](lang[locale][msg[1006]])
-      
+      return h.response({ message: lang[locale][msg[0]] })
+      .code(200)
     } catch(error) {
       console.error(`[UserHandler.Book] ERROR: ${error}`)
       throw err[code[500]](error.message)
@@ -155,7 +156,7 @@ exports.login = async (req, h) => {
   }
 
   exports.deleteBooking = async (req, h) => {
-    let params
+    let params,quantityLeft
     req = new requestHelper.Request(req)
     params = req.allParams      
     userInfo= h.request.auth.credentials.sessionAuth
@@ -167,13 +168,23 @@ exports.login = async (req, h) => {
           userId: userInfo.userId,
           day: params.day,
           month: params.month,
-          active: 1,
+          status: 1,
         },
       })
       if (!booking) return err[code[400]](lang[locale][msg[1008]])
       remainRoom= await RoomStatus.findOne({
         where: {roomId: booking.dataValues.roomId,day: parseInt(params.day),month: parseInt(params.month) }
       })
+      if (remainRoom) {
+        quantityLeft= remainRoom.dataValues.quantityLeft+booking.dataValues.quantity        
+        await RoomStatus.update({
+          quantityLeft:quantityLeft
+        }, {where: {id: remainRoom.dataValues.id}})
+      }
+      booking= await Booking.update({status:0}
+      ,{where:{id:booking.dataValues.id}})
+      return h.response({ message: lang[locale][msg[0]] })
+      .code(200)
     } catch(error) {
       console.error(`[UserHandler.Book] ERROR: ${error}`)
       throw err[code[500]](error.message)
