@@ -1,6 +1,6 @@
 module.exports={
     ttl24h: 24 * 60 * 60,
-    JWT_KEY: "secretjwt",
+    JWT_KEY: "ea86749a-cf64-47bc-81b1-85d97b8b3d57",
     mysql: {
         database: 'hotel',
         user: 'root',

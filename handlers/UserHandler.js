@@ -51,7 +51,7 @@ exports.login = async (req, h) => {
       jwtData={
         sid: uuid.v4(),
         uid: user.dataValues.id,
-        type: user.dataValues.role
+        role: user.dataValues.role
       }
       sign = await jwtHelper.createToken( jwtData, conf.ttl24h)
       console.log(sign)
@@ -137,7 +137,6 @@ exports.login = async (req, h) => {
     req = new requestHelper.Request(req)
     params = req.allParams      
     userInfo= h.request.auth.credentials.sessionAuth
-    if ( !params.day || !params.month) throw err[code[400]](lang[locale][msg[1001]])
     try{      
       bookings = await Booking.findAll({
         where: {
@@ -160,7 +159,7 @@ exports.login = async (req, h) => {
             date: date,
             typeroom: room.dataValues.type,
             quantity: booking.dataValues.quantity,
-            price: parseInt(room.dataValues.price*booking.dataValues.quantity),
+            price: parseInt(parseInt(room.dataValues.price.substring(1))*booking.dataValues.quantity),
           }
           
           result.push(data)
