@@ -11,8 +11,7 @@ class SessionAuth extends Strategies {
                     Credentials.valid = false
                     try{
                         if (!request.headers.jwt) return h.unauthenticated(err[code[405]](msg[1000]), Credentials)                          
-                        let jwtData= await jwtHelper.verify(request.headers.jwt,conf.JWT_KEY)
-                        console.log(jwtData)
+                        let jwtData= await jwtHelper.verify(request.headers.jwt,conf.JWT_KEY)                        
                         let cre= {
                             userId: jwtData.uid,
                             role: jwtData.role,

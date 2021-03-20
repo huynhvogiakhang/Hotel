@@ -3,8 +3,7 @@ exports.createRoom = async (req, h) => {
     req = new requestHelper.Request(req)
     userInfo= h.request.auth.credentials.sessionAuth
     params = req.allParams  
-    if (!params.name || !params.quantity || !params.price || !params.type) throw err[code[400]](lang[locale][msg[1001]])
-    console.log(userInfo.role)
+    if (!params.name || !params.quantity || !params.price || !params.type) throw err[code[400]](lang[locale][msg[1001]])    
     if (userInfo.role !== "admin") throw err[code[400]](lang[locale][msg[1000]])
 
     try{

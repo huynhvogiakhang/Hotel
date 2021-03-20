@@ -2,7 +2,7 @@
 
 # require 
     MySQL local with config/env/ setting
-    Sequelize auto generate if you not have columns
+    Sequelize would auto generate columns if you do not have
     If you need some example data, maybe hotel.sql could help.
 # install
 

@@ -16,7 +16,7 @@ let ctx, obj = {}, routes = []
     sequelize = new Sequelize(conf.mysql.database, conf.mysql.user, conf.mysql.password, conf.mysql.options)
     try {
         await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
+        console.log('Connected to mysql successfully.');
       } catch (error) {
         console.error('Unable to connect to the database:', error);
     }

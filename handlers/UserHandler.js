@@ -22,7 +22,6 @@ exports.register = async (req, h) => {
         role: user.dataValues.role
       }
       sign = await jwtHelper.createToken( jwtData, conf.ttl24h)
-      console.log("xuong duoc day:",sign)
       return h.response({ message: lang[locale][msg[0]] })
       .header("JWT", sign)
       .code(200)
@@ -54,7 +53,6 @@ exports.login = async (req, h) => {
         role: user.dataValues.role
       }
       sign = await jwtHelper.createToken( jwtData, conf.ttl24h)
-      console.log(sign)
       return h.response({ message: lang[locale][msg[0]] })
       .header("JWT", sign)
       .code(200)
