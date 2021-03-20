@@ -8,5 +8,6 @@ module.exports = {
     "Unregistered": "Chưa đăng ký",
     "Full Room": "Hết Phòng",
     "Success": "Thành Công",
-    "Data not found": "Không tồn tại"
+    "Data not found": "Không tồn tại",
+    "All rooms are free on this day": "Tất cả phòng còn trống"
 }

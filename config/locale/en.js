@@ -10,4 +10,5 @@ module.exports = {
     "Full Room": "Full Room",
     "Success": "Success",
     "Data not found":"Data not found",
+    "All rooms are free on this day": "All rooms are free on this day"
 }

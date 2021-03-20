@@ -4,6 +4,8 @@ module.exports= {
     "POST /book": "UserHandler.booking",
     "GET /book/list":"UserHandler.userBooking",
     "POST /book/delete":"UserHandler.deleteBooking",
+    
+    "POST /room/available":"UserHandler.availableRoom",
 
     "POST /room/create": "RoomHandler.createRoom",
     "POST /room/update": "RoomHandler.updateRoom",

@@ -10,4 +10,5 @@ module.exports = {
     1007: "Missing Email",
     1008: "Data not found",
     1009: "Full Room",
+    1010: "All rooms are free on this day"
 }

@@ -214,3 +214,35 @@ exports.login = async (req, h) => {
     
   }
   
+  exports.availableRoom = async (req, h) => {
+    let params,date,emptyRoomId=[]
+    req = new requestHelper.Request(req)
+    params = req.allParams      
+    userInfo= h.request.auth.credentials.sessionAuth
+    if ( !params.day || !params.month) throw err[code[400]](lang[locale][msg[1001]])
+    try{      
+      emptyRooms= await RoomStatus.findAll({
+        where: {quantityLeft: 0,day: parseInt(params.day),month: parseInt(params.month) }
+      })
+      if (!emptyRooms) return err[code[400]](lang[locale][msg[1010]])
+      emptyRoomIds=[]
+      for (rooms of emptyRooms){
+        emptyRoomIds.push(rooms.dataValues.roomId)
+      }      
+      availableRoom= await Room.findAll(        
+        {
+        where: {
+          id: {[Sequelize.Op.notIn]: emptyRoomIds},
+          active: 1 
+        },
+        attributes: ['name','description','type','price'], 
+      })
+      
+      return h.response(availableRoom)
+      .code(200)
+    } catch(error) {
+      console.error(`[UserHandler.Book] ERROR: ${error}`)
+      throw err[code[500]](error.message)
+    }
+    
+  }
