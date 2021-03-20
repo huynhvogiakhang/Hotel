@@ -2,6 +2,8 @@
 
 # require 
     MySQL local with config/env/ setting
+    Sequelize auto generate if you not have columns
+    If you need some example data, maybe hotel.sql could help.
 # install
 
 npm install
