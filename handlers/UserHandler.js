@@ -215,7 +215,7 @@ exports.login = async (req, h) => {
   }
   
   exports.availableRoom = async (req, h) => {
-    let params,date,emptyRoomId=[]
+    let params,emptyRoomIds=[]
     req = new requestHelper.Request(req)
     params = req.allParams      
     userInfo= h.request.auth.credentials.sessionAuth

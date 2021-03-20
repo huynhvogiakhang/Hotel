@@ -65,7 +65,7 @@ exports.updateRoom = async (req, h) => {
 
 
 exports.deleteRoom = async (req, h) => {
-    let params,roomData
+    let params
     req = new requestHelper.Request(req)
     userInfo= h.request.auth.credentials.sessionAuth
     params = req.allParams  
