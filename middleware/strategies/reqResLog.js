@@ -84,7 +84,7 @@ class ReqResLog extends Strategies {
                     let locale = request.headers["accept-language"],
                         ip = request.headers["x-forwarded-for"] || null
                     global.locale = locale                    
-                    if (typeof (locale) == "undefined" || !locale || !multiLanguage.includes(locale)) global.locale = "vi"
+                    if (typeof (locale) == "undefined" || !locale || !multiLanguage.includes(locale)) global.locale = "en"
                     return h.authenticated(that.GetCredentials)
                 }
             }

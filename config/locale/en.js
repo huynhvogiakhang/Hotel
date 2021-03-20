@@ -3,7 +3,7 @@ module.exports = {
     "Missing params": "Missing params",
     "Systems Error": "Systems Error",
     "Already Taken": "Already Taken",
-    "Something were wrong": "Something were wrong",
+    "Wrong information": "Wrong information",
     "Registered": "Registered",
     "Unregistered": "Unregistered",
     "Device's not exists": "Device's not exists",

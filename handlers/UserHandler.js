@@ -221,7 +221,7 @@ exports.login = async (req, h) => {
       emptyRooms= await RoomStatus.findAll({
         where: {quantityLeft: 0,day: parseInt(params.day),month: parseInt(params.month) }
       })
-      if (!emptyRooms) return err[code[400]](lang[locale][msg[1010]])
+      if (emptyRooms.length === 0) return h.response({ message: lang[locale][msg[1010]] })
       emptyRoomIds=[]
       for (rooms of emptyRooms){
         emptyRoomIds.push(rooms.dataValues.roomId)

@@ -3,7 +3,7 @@ module.exports = {
     "Missing params": "Thiếu dữ liệu",
     "Systems Error": "Lỗi hệ thống",
     "Already Taken": "Đã tồn tại",
-    "Something were wrong": "Sai thông tin",
+    "Wrong information": "Sai thông tin",
     "Registered": "Đã đăng ký",
     "Unregistered": "Chưa đăng ký",
     "Full Room": "Hết Phòng",
