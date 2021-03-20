@@ -25,7 +25,8 @@ exports.createRoom = async (req, h) => {
       return h.response({ message: lang[locale][msg[0]] })
       .code(200)
     } catch(error) {
-      console.log(error)
+        console.error(`[RoomHandler.createRoom] ERROR: ${error}`)
+        throw err[code[500]](error.message)
     }
     
 }
@@ -58,7 +59,8 @@ exports.updateRoom = async (req, h) => {
       return h.response({ message: lang[locale][msg[0]] })
       .code(200)
     } catch(error) {
-      console.log(error)
+        console.error(`[RoomHandler.updateRoom] ERROR: ${error}`)
+        throw err[code[500]](error.message)
     }
     
 }
@@ -85,7 +87,8 @@ exports.deleteRoom = async (req, h) => {
       return h.response({ message: lang[locale][msg[0]] })
       .code(200)
     } catch(error) {
-      console.log(error)
+        console.error(`[RoomHandler.deleteRoom] ERROR: ${error}`)
+        throw err[code[500]](error.message)
     }
     
 }

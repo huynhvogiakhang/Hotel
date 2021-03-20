@@ -126,7 +126,7 @@ exports.login = async (req, h) => {
         return h.response({ message: lang[locale][msg[0]] })
       .code(200)
     } catch(error) {
-      console.error(`[UserHandler.Book] ERROR: ${error}`)
+      console.error(`[UserHandler.booking] ERROR: ${error}`)
       throw err[code[500]](error.message)
     }
     
@@ -171,7 +171,7 @@ exports.login = async (req, h) => {
       return h.response(result)
       .code(200)
     } catch(error) {
-      console.error(`[UserHandler.Book] ERROR: ${error}`)
+      console.error(`[UserHandler.userBooking] ERROR: ${error}`)
       throw err[code[500]](error.message)
     }
     
@@ -208,7 +208,7 @@ exports.login = async (req, h) => {
       return h.response({ message: lang[locale][msg[0]] })
       .code(200)
     } catch(error) {
-      console.error(`[UserHandler.Book] ERROR: ${error}`)
+      console.error(`[UserHandler.deleteBooking] ERROR: ${error}`)
       throw err[code[500]](error.message)
     }
     
@@ -241,7 +241,7 @@ exports.login = async (req, h) => {
       return h.response(availableRoom)
       .code(200)
     } catch(error) {
-      console.error(`[UserHandler.Book] ERROR: ${error}`)
+      console.error(`[UserHandler.availableRoom] ERROR: ${error}`)
       throw err[code[500]](error.message)
     }
     
